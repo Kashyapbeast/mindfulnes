@@ -12,196 +12,299 @@
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   font-family:Arial, Helvetica, sans-serif;
-  background:#f4f7f6;
-  color:#263238;
+  background:linear-gradient(135deg,#f3f8f6 0%,#eef5f3 100%);
+  color:#263c38;
+  min-height:100vh;
 }
 
 .container{
   width:92%;
   max-width:900px;
-  margin:40px auto;
+  margin:45px auto;
 }
 
 .card{
-  background:white;
+  background:#ffffff;
+  border:1px solid #e1ebe8;
   border-radius:18px;
-  padding:35px;
-  box-shadow:0 8px 30px rgba(0,0,0,0.08);
-}
-
-h1{
-  text-align:center;
-  margin-top:0;
-  color:#245c54;
-}
-
-h2{
-  color:#245c54;
-}
-
-.subtitle{
-  text-align:center;
-  color:#667;
-  margin-bottom:30px;
+  padding:40px;
+  box-shadow:0 12px 35px rgba(37,82,73,.08);
 }
 
 .hidden{
   display:none !important;
 }
 
-input,
-select{
-  width:100%;
-  padding:14px;
-  border:1px solid #ccd6d4;
+.header{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.header-line{
+  width:55px;
+  height:3px;
+  background:#2b665c;
+  margin:16px auto 20px;
   border-radius:10px;
-  font-size:16px;
-  margin-top:8px;
+}
+
+h1{
+  margin:0;
+  color:#245c54;
+  font-size:32px;
+  font-weight:600;
+  letter-spacing:-.3px;
+}
+
+.subtitle{
+  margin:12px auto 0;
+  max-width:620px;
+  color:#71807d;
+  font-size:15px;
+  line-height:1.7;
 }
 
 label{
-  font-weight:bold;
+  display:block;
+  font-size:14px;
+  font-weight:600;
+  color:#40534f;
+  margin-bottom:8px;
+}
+
+input[type="text"]{
+  width:100%;
+  padding:15px 16px;
+  border:1px solid #d6e1de;
+  border-radius:10px;
+  background:#fbfcfc;
+  color:#263c38;
+  font-size:16px;
+  outline:none;
+  transition:.2s;
+}
+
+input[type="text"]:focus{
+  border-color:#6d9d94;
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(43,102,92,.08);
 }
 
 .button{
-  display:block;
   width:100%;
   border:0;
-  padding:15px;
+  padding:15px 20px;
   margin-top:25px;
   border-radius:10px;
-  background:#245c54;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
+  background:#285f56;
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
   cursor:pointer;
+  transition:.2s ease;
 }
 
 .button:hover{
-  opacity:.9;
+  background:#214f48;
+  transform:translateY(-1px);
+}
+
+.button:active{
+  transform:translateY(0);
 }
 
 .category-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:25px;
+  gap:14px;
+  margin-top:28px;
 }
 
 .category{
-  border:2px solid #d9e3e1;
-  padding:20px;
-  border-radius:14px;
-  cursor:pointer;
+  padding:20px 18px;
+  border:1px solid #d9e5e2;
+  border-radius:12px;
+  background:#fff;
+  color:#344945;
   text-align:center;
-  background:white;
-  transition:.2s;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s ease;
 }
 
 .category:hover{
-  border-color:#245c54;
-  transform:translateY(-2px);
+  border-color:#6d9d94;
+  background:#f7fbfa;
 }
 
 .category.selected{
-  border-color:#245c54;
-  background:#edf6f4;
+  border-color:#2b665c;
+  background:#edf6f3;
+  color:#245c54;
+  box-shadow:0 0 0 2px rgba(43,102,92,.08);
 }
 
-.question-number{
-  color:#777;
-  font-size:14px;
-  margin-bottom:10px;
+.progress-area{
+  margin-bottom:30px;
 }
 
-.question{
-  font-size:22px;
-  font-weight:bold;
-  line-height:1.4;
-  margin-bottom:25px;
-}
-
-.option{
-  border:1px solid #d6dfdd;
-  border-radius:12px;
-  padding:15px;
-  margin:10px 0;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.option:hover{
-  background:#f1f7f5;
-}
-
-.option.selected{
-  background:#e3f1ed;
-  border-color:#245c54;
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:9px;
+  color:#71807d;
+  font-size:13px;
 }
 
 .progress{
-  height:8px;
-  background:#e2e8e6;
-  border-radius:10px;
+  width:100%;
+  height:7px;
+  background:#e5ecea;
+  border-radius:20px;
   overflow:hidden;
-  margin-bottom:25px;
 }
 
 .progress-bar{
   height:100%;
   width:0%;
-  background:#245c54;
-  transition:.3s;
+  background:#2b665c;
+  border-radius:20px;
+  transition:width .3s ease;
+}
+
+.question-number{
+  color:#71807d;
+  font-size:13px;
+  margin-bottom:12px;
+  font-weight:600;
+}
+
+.question{
+  color:#263c38;
+  font-size:22px;
+  line-height:1.45;
+  font-weight:600;
+  margin-bottom:25px;
+}
+
+.option{
+  border:1px solid #d9e4e1;
+  border-radius:11px;
+  padding:16px 18px;
+  margin:11px 0;
+  background:#fff;
+  color:#3b4d49;
+  cursor:pointer;
+  transition:.2s ease;
+  line-height:1.45;
+}
+
+.option:hover{
+  border-color:#86aaa2;
+  background:#f8fbfa;
+}
+
+.option.selected{
+  border-color:#2b665c;
+  background:#edf6f3;
+  color:#245c54;
+  font-weight:600;
+}
+
+.navigation{
+  margin-top:25px;
 }
 
 .result{
   text-align:center;
 }
 
+.result-label{
+  font-size:13px;
+  color:#71807d;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-weight:600;
+}
+
 .score{
-  font-size:50px;
-  font-weight:bold;
+  margin:20px auto 10px;
+  font-size:48px;
+  line-height:1;
+  font-weight:600;
   color:#245c54;
 }
 
 .result-title{
-  font-size:28px;
-  font-weight:bold;
-  margin:15px 0;
+  margin:15px 0 12px;
+  font-size:27px;
+  color:#245c54;
+  font-weight:600;
 }
 
 .result-text{
-  color:#667;
-  line-height:1.7;
+  max-width:650px;
+  margin:0 auto;
+  color:#687874;
+  line-height:1.8;
+  font-size:15px;
 }
 
 .status{
-  text-align:center;
-  margin-top:15px;
-  font-weight:bold;
+  margin-top:28px;
+  padding:12px;
+  border-radius:9px;
+  background:#f2f7f5;
+  color:#45635d;
+  font-size:14px;
 }
 
 .warning{
-  background:#fff5e5;
-  border:1px solid #f0c36d;
-  padding:15px;
-  border-radius:10px;
-  margin-top:20px;
-  color:#76591f;
+  margin-top:15px;
+  padding:12px 14px;
+  border-radius:9px;
+  background:#fff8ed;
+  border:1px solid #eed8af;
+  color:#7a622f;
+  font-size:14px;
+}
+
+.completed{
+  text-align:center;
+}
+
+.completed h1{
+  margin-bottom:15px;
+}
+
+.completed p{
+  color:#71807d;
+  line-height:1.7;
 }
 
 @media(max-width:650px){
 
   .container{
-    width:95%;
-    margin:20px auto;
+    width:94%;
+    margin:25px auto;
   }
 
   .card{
-    padding:25px 20px;
+    padding:28px 20px;
+    border-radius:15px;
+  }
+
+  h1{
+    font-size:27px;
   }
 
   .category-grid{
@@ -210,6 +313,10 @@ label{
 
   .question{
     font-size:19px;
+  }
+
+  .score{
+    font-size:42px;
   }
 
 }
@@ -222,98 +329,151 @@ label{
 
 <div class="container">
 
-  <!-- NAME SCREEN -->
 
-  <div class="card" id="nameScreen">
+<!-- =====================================================
+     NAME SCREEN
+     ===================================================== -->
+
+<div class="card" id="nameScreen">
+
+  <div class="header">
 
     <h1>Mindfulness Assessment</h1>
 
+    <div class="header-line"></div>
+
     <p class="subtitle">
-      Take a few moments to understand your current workplace mindset.
+      Take a few moments to understand your current workplace
+      mindset and level of mindfulness.
     </p>
-
-    <label for="userName">
-      Your Name
-    </label>
-
-    <input
-      type="text"
-      id="userName"
-      placeholder="Enter your name"
-      autocomplete="off"
-    >
-
-    <button
-      class="button"
-      onclick="startAssessment()"
-    >
-      Continue
-    </button>
-
-    <div
-      id="nameError"
-      class="warning hidden"
-    >
-      Please enter your name before continuing.
-    </div>
 
   </div>
 
 
-  <!-- CATEGORY SCREEN -->
+  <label for="userName">
+    Your Name
+  </label>
 
-  <div class="card hidden" id="categoryScreen">
+  <input
+    type="text"
+    id="userName"
+    placeholder="Enter your name"
+    autocomplete="off"
+  >
+
+
+  <button
+    class="button"
+    onclick="startAssessment()"
+  >
+    Continue
+  </button>
+
+
+  <div
+    id="nameError"
+    class="warning hidden"
+  >
+    Please enter your name before continuing.
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CATEGORY SCREEN
+     ===================================================== -->
+
+<div class="card hidden" id="categoryScreen">
+
+  <div class="header">
 
     <h1>Select Your Department</h1>
 
+    <div class="header-line"></div>
+
     <p class="subtitle">
-      Select the department that applies to you.
+      Please select your department to begin the assessment.
     </p>
-
-    <div
-      class="category-grid"
-      id="categoryGrid"
-    ></div>
-
-    <button
-      class="button"
-      onclick="startQuestions()"
-    >
-      Start Assessment
-    </button>
-
-    <div
-      id="categoryError"
-      class="warning hidden"
-    >
-      Please select a department.
-    </div>
 
   </div>
 
 
-  <!-- QUESTION SCREEN -->
+  <div
+    class="category-grid"
+    id="categoryGrid"
+  ></div>
 
-  <div class="card hidden" id="questionScreen">
+
+  <button
+    class="button"
+    onclick="startQuestions()"
+  >
+    Start Assessment
+  </button>
+
+
+  <div
+    id="categoryError"
+    class="warning hidden"
+  >
+    Please select a department.
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     QUESTION SCREEN
+     ===================================================== -->
+
+<div class="card hidden" id="questionScreen">
+
+  <div class="progress-area">
+
+    <div class="progress-top">
+
+      <span id="questionProgress">
+        Assessment Progress
+      </span>
+
+      <span id="questionCount">
+        1 / 10
+      </span>
+
+    </div>
+
 
     <div class="progress">
+
       <div
         class="progress-bar"
         id="progressBar"
       ></div>
+
     </div>
 
-    <div
-      class="question-number"
-      id="questionNumber"
-    ></div>
+  </div>
 
-    <div
-      class="question"
-      id="questionText"
-    ></div>
 
-    <div id="options"></div>
+  <div
+    class="question-number"
+    id="questionNumber"
+  ></div>
+
+
+  <div
+    class="question"
+    id="questionText"
+  ></div>
+
+
+  <div id="options"></div>
+
+
+  <div class="navigation">
 
     <button
       class="button"
@@ -325,39 +485,48 @@ label{
 
   </div>
 
+</div>
 
-  <!-- RESULT SCREEN -->
 
-  <div class="card hidden" id="resultScreen">
 
-    <div class="result">
+<!-- =====================================================
+     RESULT SCREEN
+     ===================================================== -->
 
-      <h1>Assessment Complete</h1>
+<div class="card hidden" id="resultScreen">
 
-      <div
-        class="score"
-        id="score"
-      >
-        0
-      </div>
+  <div class="result">
 
-      <div
-        class="result-title"
-        id="resultTitle"
-      ></div>
+    <div class="result-label">
+      Assessment Complete
+    </div>
 
-      <p
-        class="result-text"
-        id="resultText"
-      ></p>
 
-      <div
-        class="status"
-        id="saveStatus"
-      >
-        Saving your result...
-      </div>
+    <div
+      class="score"
+      id="score"
+    >
+      0
+    </div>
 
+
+    <div
+      class="result-title"
+      id="resultTitle"
+    ></div>
+
+
+    <p
+      class="result-text"
+      id="resultText"
+    ></p>
+
+
+    <div
+      class="status"
+      id="saveStatus"
+    >
+      Saving your result...
     </div>
 
   </div>
@@ -365,7 +534,14 @@ label{
 </div>
 
 
-<!-- Hidden iframe used for Google Apps Script submission -->
+
+</div>
+
+
+
+<!-- =====================================================
+     HIDDEN SUBMISSION FRAME
+     ===================================================== -->
 
 <iframe
   name="sheetsSubmitFrame"
@@ -374,26 +550,29 @@ label{
 ></iframe>
 
 
+
 <script>
 
-/* =========================================================
+
+/* =====================================================
    GOOGLE APPS SCRIPT URL
-   ========================================================= */
+   ===================================================== */
 
 const SHEETS_URL =
 "https://script.google.com/macros/s/AKfycbyfVv__LXret_FJy-voRmKzpRUQgPRtEVz5IGoW-JERlwctvnB0gUZ7Lpx6dhGlrvVW/exec";
 
 
-/* =========================================================
+/* =====================================================
    ONE ATTEMPT RESTRICTION
-   ========================================================= */
+   ===================================================== */
 
-const LOCK_KEY = "mindfulness_assessment_completed";
+const LOCK_KEY =
+"mindfulness_assessment_completed";
 
 
-/* =========================================================
+/* =====================================================
    DEPARTMENTS
-   ========================================================= */
+   ===================================================== */
 
 const departments = [
 
@@ -435,9 +614,9 @@ const departments = [
 ];
 
 
-/* =========================================================
+/* =====================================================
    QUESTIONS
-   ========================================================= */
+   ===================================================== */
 
 const questions = [
 
@@ -544,9 +723,9 @@ const questions = [
 ];
 
 
-/* =========================================================
+/* =====================================================
    VARIABLES
-   ========================================================= */
+   ===================================================== */
 
 let user = "";
 
@@ -561,9 +740,9 @@ let answers = [];
 let selectedAnswer = null;
 
 
-/* =========================================================
+/* =====================================================
    PAGE ELEMENTS
-   ========================================================= */
+   ===================================================== */
 
 const nameScreen =
 document.getElementById("nameScreen");
@@ -578,28 +757,30 @@ const resultScreen =
 document.getElementById("resultScreen");
 
 
-/* =========================================================
-   CHECK WHETHER USER HAS ALREADY COMPLETED TEST
-   ========================================================= */
+/* =====================================================
+   PAGE LOAD
+   ===================================================== */
 
-window.addEventListener("load", function(){
+window.addEventListener("load",function(){
 
-  if(localStorage.getItem(LOCK_KEY) === "yes"){
+  if(
+    localStorage.getItem(LOCK_KEY)
+    ===
+    "yes"
+  ){
 
     document.querySelector(".container").innerHTML = `
 
-      <div class="card">
+      <div class="card completed">
 
-        <div class="result">
+        <h1>Assessment Already Completed</h1>
 
-          <h1>Assessment Already Completed</h1>
+        <div class="header-line"></div>
 
-          <p class="result-text">
-            You have already completed the Mindfulness Assessment
-            on this device.
-          </p>
-
-        </div>
+        <p>
+          You have already completed the
+          Mindfulness Assessment on this device.
+        </p>
 
       </div>
 
@@ -615,9 +796,9 @@ window.addEventListener("load", function(){
 });
 
 
-/* =========================================================
-   CREATE DEPARTMENT BUTTONS
-   ========================================================= */
+/* =====================================================
+   CREATE DEPARTMENT OPTIONS
+   ===================================================== */
 
 function createCategories(){
 
@@ -632,9 +813,14 @@ function createCategories(){
     const div =
     document.createElement("div");
 
-    div.className = "category";
 
-    div.textContent = department.name;
+    div.className =
+    "category";
+
+
+    div.textContent =
+    department.name;
+
 
     div.onclick = function(){
 
@@ -649,7 +835,10 @@ function createCategories(){
 
       div.classList.add("selected");
 
-      role = department.id;
+
+      role =
+      department.id;
+
 
       document
       .getElementById("categoryError")
@@ -665,14 +854,15 @@ function createCategories(){
 }
 
 
-/* =========================================================
+/* =====================================================
    START ASSESSMENT
-   ========================================================= */
+   ===================================================== */
 
 function startAssessment(){
 
   const input =
   document.getElementById("userName");
+
 
   user =
   input.value.trim();
@@ -689,6 +879,11 @@ function startAssessment(){
   }
 
 
+  document
+  .getElementById("nameError")
+  .classList.add("hidden");
+
+
   nameScreen.classList.add("hidden");
 
   categoryScreen.classList.remove("hidden");
@@ -696,9 +891,9 @@ function startAssessment(){
 }
 
 
-/* =========================================================
+/* =====================================================
    START QUESTIONS
-   ========================================================= */
+   ===================================================== */
 
 function startQuestions(){
 
@@ -732,9 +927,9 @@ function startQuestions(){
 }
 
 
-/* =========================================================
+/* =====================================================
    SHOW QUESTION
-   ========================================================= */
+   ===================================================== */
 
 function showQuestion(){
 
@@ -752,13 +947,21 @@ function showQuestion(){
 
 
   document
+  .getElementById("questionCount")
+  .textContent =
+  (currentQuestion + 1) +
+  " / " +
+  questions.length;
+
+
+  document
   .getElementById("questionText")
   .textContent =
   question.q;
 
 
   const progress =
-  ((currentQuestion) /
+  ((currentQuestion + 1) /
   questions.length) * 100;
 
 
@@ -778,44 +981,63 @@ function showQuestion(){
   selectedAnswer = null;
 
 
-  question.options.forEach(function(option, index){
+  question.options.forEach(
+    function(option,index){
 
-    const div =
-    document.createElement("div");
-
-    div.className = "option";
-
-    div.textContent = option;
+      const div =
+      document.createElement("div");
 
 
-    div.onclick = function(){
-
-      document
-      .querySelectorAll(".option")
-      .forEach(function(item){
-
-        item.classList.remove("selected");
-
-      });
+      div.className =
+      "option";
 
 
-      div.classList.add("selected");
-
-      selectedAnswer = index;
-
-    };
+      div.textContent =
+      option;
 
 
-    options.appendChild(div);
+      div.onclick =
+      function(){
 
-  });
+        document
+        .querySelectorAll(".option")
+        .forEach(function(item){
+
+          item.classList.remove(
+            "selected"
+          );
+
+        });
+
+
+        div.classList.add(
+          "selected"
+        );
+
+
+        selectedAnswer =
+        index;
+
+      };
+
+
+      options.appendChild(div);
+
+    }
+  );
 
 
   const button =
-  document.getElementById("nextButton");
+  document.getElementById(
+    "nextButton"
+  );
 
 
-  if(currentQuestion === questions.length - 1){
+  if(
+    currentQuestion
+    ===
+    questions.length - 1
+  ){
 
     button.textContent =
     "Finish Assessment";
@@ -832,15 +1054,17 @@ function showQuestion(){
 }
 
 
-/* =========================================================
+/* =====================================================
    NEXT QUESTION
-   ========================================================= */
+   ===================================================== */
 
 function nextQuestion(){
 
   if(selectedAnswer === null){
 
-    alert("Please select an answer.");
+    alert(
+      "Please select an answer."
+    );
 
     return;
 
@@ -852,10 +1076,12 @@ function nextQuestion(){
 
 
   /*
-    First answer = 4 points
-    Second answer = 3 points
-    Third answer = 2 points
-    Fourth answer = 1 point
+    Scoring:
+
+    First option  = 4
+    Second option = 3
+    Third option  = 2
+    Fourth option = 1
   */
 
   const points =
@@ -871,7 +1097,9 @@ function nextQuestion(){
     question.q,
 
     answer:
-    question.options[selectedAnswer],
+    question.options[
+      selectedAnswer
+    ],
 
     score:
     points
@@ -882,7 +1110,11 @@ function nextQuestion(){
   currentQuestion++;
 
 
-  if(currentQuestion >= questions.length){
+  if(
+    currentQuestion
+    >=
+    questions.length
+  ){
 
     showResult();
 
@@ -896,9 +1128,9 @@ function nextQuestion(){
 }
 
 
-/* =========================================================
-   RESULT
-   ========================================================= */
+/* =====================================================
+   SHOW RESULT
+   ===================================================== */
 
 function showResult(){
 
@@ -910,7 +1142,9 @@ function showResult(){
   document
   .getElementById("score")
   .textContent =
-  total + " / " + (questions.length * 4);
+  total +
+  " / " +
+  (questions.length * 4);
 
 
   let title = "";
@@ -923,6 +1157,7 @@ function showResult(){
     title =
     "Highly Mindful";
 
+
     text =
     "You demonstrate strong mindfulness and awareness in your workplace approach. You appear to manage pressure, stay focused and maintain a balanced mindset.";
 
@@ -932,6 +1167,7 @@ function showResult(){
 
     title =
     "Grounded & Aware";
+
 
     text =
     "You demonstrate a generally healthy level of mindfulness. There are good habits in place, with some opportunities to become even more aware and balanced.";
@@ -943,6 +1179,7 @@ function showResult(){
     title =
     "Building Awareness";
 
+
     text =
     "Your mindfulness is developing. Small changes in how you manage stress, focus and reflect can make a meaningful difference.";
 
@@ -952,6 +1189,7 @@ function showResult(){
 
     title =
     "Opportunity to Grow";
+
 
     text =
     "There is an opportunity to strengthen your mindfulness habits. Consider taking regular breaks, reflecting on your emotions and creating healthier ways to manage pressure.";
@@ -976,24 +1214,27 @@ function showResult(){
 }
 
 
-/* =========================================================
+/* =====================================================
    SEND RESULT TO GOOGLE SHEETS
-   ========================================================= */
+   ===================================================== */
 
 function sendResult(title){
 
   const status =
-  document.getElementById("saveStatus");
+  document.getElementById(
+    "saveStatus"
+  );
 
 
   /*
     IMPORTANT:
-    We are NOT using fetch() or JSON here.
 
-    We are submitting a normal HTML form
-    because Apps Script reads e.parameter.
+    We use a normal HTML form instead
+    of fetch/JSON.
+
+    This matches the Apps Script
+    e.parameter system.
   */
-
 
   const form =
   document.createElement("form");
@@ -1035,27 +1276,31 @@ function sendResult(title){
   };
 
 
-  Object.keys(fields).forEach(function(key){
+  Object.keys(fields).forEach(
+    function(key){
 
-    const input =
-    document.createElement("input");
-
-
-    input.type =
-    "hidden";
-
-
-    input.name =
-    key;
+      const input =
+      document.createElement(
+        "input"
+      );
 
 
-    input.value =
-    fields[key];
+      input.type =
+      "hidden";
 
 
-    form.appendChild(input);
+      input.name =
+      key;
 
-  });
+
+      input.value =
+      fields[key];
+
+
+      form.appendChild(input);
+
+    }
+  );
 
 
   document.body.appendChild(form);
@@ -1069,41 +1314,48 @@ function sendResult(title){
 
 
   /*
-    Give Apps Script a little time
-    to process the submission.
+    Give Apps Script time
+    to save the response.
   */
 
-  setTimeout(function(){
+  setTimeout(
+    function(){
 
-    status.textContent =
-    "✓ Your result has been submitted successfully.";
+      status.textContent =
+      "Your result has been submitted successfully.";
 
-    /*
-      Lock the assessment after submission.
-    */
 
-    localStorage.setItem(
-      LOCK_KEY,
-      "yes"
-    );
+      /*
+        Prevent another attempt
+        on this device.
+      */
 
-  }, 1500);
+      localStorage.setItem(
+        LOCK_KEY,
+        "yes"
+      );
+
+    },
+    1500
+  );
 
 }
 
 
-/* =========================================================
+/* =====================================================
    GET DEPARTMENT NAME
-   ========================================================= */
+   ===================================================== */
 
 function getDepartmentName(){
 
   const department =
-  departments.find(function(item){
+  departments.find(
+    function(item){
 
-    return item.id === role;
+      return item.id === role;
 
-  });
+    }
+  );
 
 
   if(department){
