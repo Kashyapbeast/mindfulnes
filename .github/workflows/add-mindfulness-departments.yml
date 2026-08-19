@@ -1,0 +1,53 @@
+name: Add Travel and Attendance Departments
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-assessment:
+    if: ${{ !contains(github.event.head_commit.message, 'Add Travel and Attendance departments') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add departments and questions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          old_names = '''    chro: "CHRO / HR Leadership"\n  };'''
+          new_names = '''    chro: "CHRO / HR Leadership",\n    travel: "Travel Department",\n    attendance: "Attendance Department"\n  };'''
+          if old_names in s and 'travel: "Travel Department"' not in s:
+              s = s.replace(old_names, new_names, 1)
+
+          old_buttons = '''      <button class="role-btn span-2" data-role="chro">CHRO / HR Leadership</button>'''
+          new_buttons = '''      <button class="role-btn span-2" data-role="chro">CHRO / HR Leadership</button>\n      <button class="role-btn" data-role="travel">Travel Department</button>\n      <button class="role-btn" data-role="attendance">Attendance Department</button>'''
+          if old_buttons in s and 'data-role="travel"' not in s:
+              s = s.replace(old_buttons, new_buttons, 1)
+
+          marker = '  // 2 role-specific questions per function\n  const roleQuestions = {'
+          questions = '''  // 2 role-specific questions per function\n  const roleQuestions = {\n    travel: [\n      {\n        tag: "Focus at work",\n        text: "A travel request changes at the last minute and you need to rearrange the booking. What's your first reaction?",\n        options: [\n          { label: "I panic and try to fix everything at once", marks: 0 },\n          { label: "I feel stressed but start working through it", marks: 1 },\n          { label: "I pause, check the priorities, then rearrange it", marks: 2 },\n          { label: "I stay calm and methodically find the best option", marks: 3 }\n        ]\n      },\n      {\n        tag: "Focus at work",\n        text: "When several employees have travel requirements at the same time, how do you manage your attention?",\n        options: [\n          { label: "I jump between requests and become scattered", marks: 0 },\n          { label: "I work quickly but feel under pressure", marks: 1 },\n          { label: "I prioritize requests and handle them one by one", marks: 2 },\n          { label: "I remain composed, prioritize clearly, and keep track of every request", marks: 3 }\n        ]\n      }\n    ],\n    attendance: [\n      {\n        tag: "Focus at work",\n        text: "You notice an attendance discrepancy just before an important payroll or reporting deadline. What do you do first?",\n        options: [\n          { label: "Panic and try to correct everything immediately", marks: 0 },\n          { label: "Feel stressed but start checking records", marks: 1 },\n          { label: "Pause, verify the records, then correct the issue", marks: 2 },\n          { label: "Stay calm, identify the source, and resolve it systematically", marks: 3 }\n        ]\n      },\n      {\n        tag: "Focus at work",\n        text: "When employees repeatedly raise attendance-related queries, how do you respond?",\n        options: [\n          { label: "I get frustrated and respond reactively", marks: 0 },\n          { label: "I answer them but feel mentally drained", marks: 1 },\n          { label: "I listen, check the details, and respond one query at a time", marks: 2 },\n          { label: "I stay patient, focused, and resolve each query calmly", marks: 3 }\n        ]\n      }\n    ],\n'''
+          if marker in s and 'travel: [' not in s:
+              s = s.replace(marker, questions, 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git commit -m "Add Travel and Attendance departments"
+          git push
