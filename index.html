@@ -515,7 +515,7 @@ const questions = [
     },
 
     {
-        tag:"Logical Reasoning",
+        tag:"Logical Reasoning — Performance Management",
         q:"You receive an email stating, \"We need to discuss your recent performance.\" You immediately assume your manager is unhappy with you. What is the most mindful and logical next step?",
         options:[
             "Ignore the message until the manager provides more details",
@@ -544,15 +544,15 @@ const questions = [
     },
 
     {
-        tag:"Logical Reasoning",
-        q:"During a high-pressure meeting, a senior stakeholder strongly criticizes your proposal. Which response demonstrates both mindfulness and logical decision-making?",
+        tag:"Logical Reasoning — Payroll",
+        q:"An employee messages you saying their salary credited this month is less than expected, with no further details given. What is the most logical first step?",
         options:[
-            "Accept all criticism because the stakeholder is senior",
-            "Pause, identify the specific concerns, and evaluate them against the available evidence",
-            "Defend every part of the proposal immediately",
-            "Withdraw the proposal to avoid further criticism"
+            "Tell them it's likely their own miscalculation and ask them to recheck",
+            "Pull up their actual payslip and salary breakup to verify against their query first",
+            "Escalate straight to finance before looking into it yourself",
+            "Wait for them to raise a formal written complaint before checking anything"
         ],
-        points:[1,4,0,1]
+        points:[1,4,1,0]
     },
 
     {
@@ -568,7 +568,7 @@ const questions = [
     },
 
     {
-        tag:"Logical Reasoning",
+        tag:"Logical Reasoning — Recruitment",
         q:"You're comparing two candidates for a client-facing HR role. One has more experience but weaker communication skills in the interview; the other has less experience but communicates very clearly. What is the most logical way to decide?",
         options:[
             "Choose the more experienced candidate automatically, since experience matters most",
@@ -597,8 +597,8 @@ const questions = [
     },
 
     {
-        tag:"Logical Reasoning",
-        q:"An employee insists they never received an official letter HR sent two weeks ago. What is the most logical first step?",
+        tag:"Logical Reasoning — HR Records",
+        q:"An employee insists they never received an official letter (appointment, increment, or warning) that HR sent two weeks ago. What is the most logical first step?",
         options:[
             "Assume the employee is mistaken and proceed with the next step anyway",
             "Check the actual sent records — email, post, or tracking — before concluding anything",
@@ -615,8 +615,8 @@ const questions = [
     },
 
     {
-        tag:"Logical Reasoning",
-        q:"Two team leads interpret the same policy clause differently and both act on their own reading of it. What is the most logical way to resolve this?",
+        tag:"Logical Reasoning — Policy & Compliance",
+        q:"Two team leads interpret the company's hybrid-work policy differently — one allows any 2 days from home, the other insists on fixed days. Both are acting on their own reading. What is the most logical way to resolve this?",
         options:[
             "Let each team continue with its own interpretation to avoid conflict",
             "Go back to the original policy document and clarify the intended meaning",
@@ -633,15 +633,15 @@ const questions = [
     },
 
     {
-        tag:"Logical Reasoning",
-        q:"You notice a rise in sick-leave requests from one team over the past month, but don't yet know why. What is the most logical next step?",
+        tag:"Logical Reasoning — Attendance",
+        q:"The attendance system shows an employee marked absent for two days, but the employee insists they were present and their manager verbally confirms it. What is the most logical next step?",
         options:[
-            "Assume the manager is mistreating the team",
-            "Gather context first — check workload, recent changes, or speak with a few team members",
-            "Ignore it and assume it will resolve on its own",
-            "Send a mass email asking everyone to explain their absences"
+            "Trust the system data over the employee's and manager's word, without checking further",
+            "Check the biometric logs, swipe records, or any other supporting evidence before concluding either way",
+            "Mark it present based on the manager's word alone, without checking records",
+            "Ignore the discrepancy since it's only two days"
         ],
-        points:[0,4,1,1]
+        points:[1,4,1,0]
     }
 
 ];
