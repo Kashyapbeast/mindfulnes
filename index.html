@@ -395,7 +395,9 @@ input[type="text"]::placeholder{ color:#a0adaa; }
 
     <p class="header-description">
         A short, honest self-check for the HR team — whatever part of HR you work in.
-    
+        Eight questions on awareness and focus, plus two logical-reasoning
+        scenarios drawn from everyday HR situations — no paper needed,
+        and a perfect score is meant to be genuinely hard to reach.
     </p>
 
     <div class="mindfulness-visual">
@@ -416,7 +418,7 @@ input[type="text"]::placeholder{ color:#a0adaa; }
 
     <div class="progress-header">
         <span>Mindfulness Assessment</span>
-        <span id="questionCount">1 / 16</span>
+        <span id="questionCount">1 / 10</span>
     </div>
 
     <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
@@ -444,7 +446,7 @@ input[type="text"]::placeholder{ color:#a0adaa; }
             </svg>
             <div class="gauge-center">
                 <div class="score" id="score">0</div>
-                <div class="score-total" id="scoreTotal">out of 54</div>
+                <div class="score-total" id="scoreTotal">out of 40</div>
             </div>
         </div>
 
@@ -489,12 +491,12 @@ const selectedCategoryName = "Human Resource Department";
 
 /* =========================================================
    QUESTIONS
-   Generic HR questions answerable by anyone in HR —
+   10 total: 8 generic HR questions answerable by anyone in HR —
    recruitment, payroll, PMS, HR backend, or attendance —
-   interleaved with six logical-reasoning scenario questions.
+   plus 2 logical-reasoning scenario questions.
    Logic questions are scored strictly (one clear best answer,
-   the rest scored low) so a high total is genuinely earned —
-   scoring above 40 should be difficult, not the default outcome.
+   the rest scored low) so getting a perfect 40 is genuinely
+   earned, not the default outcome.
    Each option carries its own explicit points value.
    ========================================================= */
 
@@ -503,13 +505,13 @@ const questions = [
     {
         q:"How often do you feel mentally present while working?",
         options:["Almost always","Often","Sometimes","Rarely"],
-        points:[3,2,1,0]
+        points:[4,3,2,1]
     },
 
     {
         q:"How well are you able to manage work-related stress?",
         options:["Very well","Well","Sometimes difficult","Very difficult"],
-        points:[3,2,1,0]
+        points:[4,3,2,1]
     },
 
     {
@@ -532,66 +534,13 @@ const questions = [
             "Continue working despite the pressure",
             "Feel completely overwhelmed"
         ],
-        points:[3,2,1,0]
-    },
-
-    {
-        q:"How comfortable are you discussing concerns with colleagues?",
-        options:["Very comfortable","Comfortable","Somewhat uncomfortable","Very uncomfortable"],
-        points:[3,2,1,0]
-    },
-
-    {
-        tag:"Logical Reasoning — Payroll",
-        q:"An employee messages you saying their salary credited this month is less than expected, with no further details given. What is the most logical first step?",
-        options:[
-            "Tell them it's likely their own miscalculation and ask them to recheck",
-            "Pull up their actual payslip and salary breakup to verify against their query first",
-            "Escalate straight to finance before looking into it yourself",
-            "Wait for them to raise a formal written complaint before checking anything"
-        ],
-        points:[1,4,1,0]
-    },
-
-    {
-        q:"How often do you take short mental breaks during work?",
-        options:["Regularly","Often","Sometimes","Almost never"],
-        points:[3,2,1,0]
+        points:[4,3,2,1]
     },
 
     {
         q:"How focused are you during important tasks?",
         options:["Extremely focused","Quite focused","Sometimes distracted","Frequently distracted"],
-        points:[3,2,1,0]
-    },
-
-    {
-        tag:"Logical Reasoning — Recruitment",
-        q:"You're comparing two candidates for a client-facing HR role. One has more experience but weaker communication skills in the interview; the other has less experience but communicates very clearly. What is the most logical way to decide?",
-        options:[
-            "Choose the more experienced candidate automatically, since experience matters most",
-            "Weigh both experience and the specific demands of the role before deciding",
-            "Choose whoever interviewed most recently",
-            "Ask a colleague to make the decision for you"
-        ],
-        points:[1,4,0,1]
-    },
-
-    {
-        q:"How well do you maintain a healthy work-life balance?",
-        options:["Very well","Well","Needs improvement","Poorly"],
-        points:[3,2,1,0]
-    },
-
-    {
-        q:"How do you react when something does not go according to plan?",
-        options:[
-            "Stay calm and adapt",
-            "Try to solve it quickly",
-            "Become somewhat stressed",
-            "Become very stressed"
-        ],
-        points:[3,2,1,0]
+        points:[4,3,2,1]
     },
 
     {
@@ -607,39 +556,32 @@ const questions = [
     },
 
     {
-        q:"How often do you reflect on your thoughts and emotions?",
-        options:["Daily","Several times a week","Occasionally","Rarely"],
-        points:[3,2,1,0]
+        q:"How well do you maintain a healthy work-life balance?",
+        options:["Very well","Well","Needs improvement","Poorly"],
+        points:[4,3,2,1]
     },
 
     {
-        tag:"Logical Reasoning — Policy & Compliance",
-        q:"Two team leads interpret the company's hybrid-work policy differently — one allows any 2 days from home, the other insists on fixed days. Both are acting on their own reading. What is the most logical way to resolve this?",
+        q:"How do you react when something does not go according to plan?",
         options:[
-            "Let each team continue with its own interpretation to avoid conflict",
-            "Go back to the original policy document and clarify the intended meaning",
-            "Side with whichever team lead has more seniority",
-            "Escalate immediately without first checking the policy text"
+            "Stay calm and adapt",
+            "Try to solve it quickly",
+            "Become somewhat stressed",
+            "Become very stressed"
         ],
-        points:[1,4,0,1]
+        points:[4,3,2,1]
+    },
+
+    {
+        q:"How often do you reflect on your thoughts and emotions?",
+        options:["Daily","Several times a week","Occasionally","Rarely"],
+        points:[4,3,2,1]
     },
 
     {
         q:"Overall, how mindful do you feel at work?",
         options:["Highly mindful","Generally mindful","Sometimes mindful","Need to improve"],
-        points:[3,2,1,0]
-    },
-
-    {
-        tag:"Logical Reasoning — Attendance",
-        q:"The attendance system shows an employee marked absent for two days, but the employee insists they were present and their manager verbally confirms it. What is the most logical next step?",
-        options:[
-            "Trust the system data over the employee's and manager's word, without checking further",
-            "Check the biometric logs, swipe records, or any other supporting evidence before concluding either way",
-            "Mark it present based on the manager's word alone, without checking records",
-            "Ignore the discrepancy since it's only two days"
-        ],
-        points:[1,4,1,0]
+        points:[4,3,2,1]
     }
 
 ];
