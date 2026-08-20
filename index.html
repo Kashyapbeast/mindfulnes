@@ -446,7 +446,7 @@ input[type="text"]::placeholder{ color:#a0adaa; }
             </svg>
             <div class="gauge-center">
                 <div class="score" id="score">0</div>
-                <div class="score-total" id="scoreTotal">out of 40</div>
+                <div class="score-total" id="scoreTotal">out of 20</div>
             </div>
         </div>
 
@@ -505,17 +505,17 @@ const questions = [
     {
         q:"How often do you feel mentally present while working?",
         options:["Almost always","Often","Sometimes","Rarely"],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     },
 
     {
         q:"How well are you able to manage work-related stress?",
         options:["Very well","Well","Sometimes difficult","Very difficult"],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     },
 
     {
-        tag:"Logical Reasoning — Performance Management",
+        tag:"Logical Reasoning",
         q:"You receive an email stating, \"We need to discuss your recent performance.\" You immediately assume your manager is unhappy with you. What is the most mindful and logical next step?",
         options:[
             "Ignore the message until the manager provides more details",
@@ -523,7 +523,7 @@ const questions = [
             "Ask colleagues whether the manager has complained about you",
             "Prepare a defensive explanation before the meeting"
         ],
-        points:[1,4,0,1]
+        points:[0,2,0,0]
     },
 
     {
@@ -534,31 +534,31 @@ const questions = [
             "Continue working despite the pressure",
             "Feel completely overwhelmed"
         ],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     },
 
     {
         q:"How focused are you during important tasks?",
         options:["Extremely focused","Quite focused","Sometimes distracted","Frequently distracted"],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     },
 
     {
-        tag:"Logical Reasoning — HR Records",
-        q:"An employee insists they never received an official letter (appointment, increment, or warning) that HR sent two weeks ago. What is the most logical first step?",
+        tag:"Logical Reasoning",
+        q:"During a high-pressure meeting, a senior stakeholder strongly criticizes your proposal. Which response demonstrates both mindfulness and logical decision-making?",
         options:[
-            "Assume the employee is mistaken and proceed with the next step anyway",
-            "Check the actual sent records — email, post, or tracking — before concluding anything",
-            "Resend the letter immediately without checking anything first",
-            "Escalate straight to the reporting manager"
+            "Accept all criticism because the stakeholder is senior",
+            "Pause, identify the specific concerns, and evaluate them against the available evidence",
+            "Defend every part of the proposal immediately",
+            "Withdraw the proposal to avoid further criticism"
         ],
-        points:[0,4,1,1]
+        points:[0,2,0,0]
     },
 
     {
         q:"How well do you maintain a healthy work-life balance?",
         options:["Very well","Well","Needs improvement","Poorly"],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     },
 
     {
@@ -569,19 +569,19 @@ const questions = [
             "Become somewhat stressed",
             "Become very stressed"
         ],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     },
 
     {
         q:"How often do you reflect on your thoughts and emotions?",
         options:["Daily","Several times a week","Occasionally","Rarely"],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     },
 
     {
         q:"Overall, how mindful do you feel at work?",
         options:["Highly mindful","Generally mindful","Sometimes mindful","Need to improve"],
-        points:[4,3,2,1]
+        points:[2,1,0,0]
     }
 
 ];
