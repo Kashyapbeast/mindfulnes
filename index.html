@@ -395,8 +395,9 @@ input[type="text"]::placeholder{ color:#a0adaa; }
 
     <p class="header-description">
         A short, honest self-check for the HR team — whatever part of HR you work in.
-        Ten questions on awareness and focus, plus two quick logical-reasoning
-        scenarios, no right or wrong pressure either way.
+        Ten questions on awareness and focus, plus six logical-reasoning
+        scenarios that test how clearly you think under pressure — no
+        paper needed, and scoring above 40 is meant to be genuinely hard.
     </p>
 
     <div class="mindfulness-visual">
@@ -417,7 +418,7 @@ input[type="text"]::placeholder{ color:#a0adaa; }
 
     <div class="progress-header">
         <span>Mindfulness Assessment</span>
-        <span id="questionCount">1 / 12</span>
+        <span id="questionCount">1 / 16</span>
     </div>
 
     <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
@@ -445,7 +446,7 @@ input[type="text"]::placeholder{ color:#a0adaa; }
             </svg>
             <div class="gauge-center">
                 <div class="score" id="score">0</div>
-                <div class="score-total" id="scoreTotal">out of 48</div>
+                <div class="score-total" id="scoreTotal">out of 54</div>
             </div>
         </div>
 
@@ -492,7 +493,10 @@ const selectedCategoryName = "Human Resource Department";
    QUESTIONS
    Generic HR questions answerable by anyone in HR —
    recruitment, payroll, PMS, HR backend, or attendance —
-   plus two logical-reasoning scenario questions.
+   interleaved with six logical-reasoning scenario questions.
+   Logic questions are scored strictly (one clear best answer,
+   the rest scored low) so a high total is genuinely earned —
+   scoring above 40 should be difficult, not the default outcome.
    Each option carries its own explicit points value.
    ========================================================= */
 
@@ -501,71 +505,13 @@ const questions = [
     {
         q:"How often do you feel mentally present while working?",
         options:["Almost always","Often","Sometimes","Rarely"],
-        points:[4,3,2,1]
+        points:[3,2,1,0]
     },
 
     {
         q:"How well are you able to manage work-related stress?",
         options:["Very well","Well","Sometimes difficult","Very difficult"],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"When work becomes overwhelming, what do you usually do?",
-        options:[
-            "Prioritize and stay calm",
-            "Take a short break",
-            "Continue working despite the pressure",
-            "Feel completely overwhelmed"
-        ],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"How comfortable are you discussing concerns with colleagues?",
-        options:["Very comfortable","Comfortable","Somewhat uncomfortable","Very uncomfortable"],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"How often do you take short mental breaks during work?",
-        options:["Regularly","Often","Sometimes","Almost never"],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"How focused are you during important tasks?",
-        options:["Extremely focused","Quite focused","Sometimes distracted","Frequently distracted"],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"How well do you maintain a healthy work-life balance?",
-        options:["Very well","Well","Needs improvement","Poorly"],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"How do you react when something does not go according to plan?",
-        options:[
-            "Stay calm and adapt",
-            "Try to solve it quickly",
-            "Become somewhat stressed",
-            "Become very stressed"
-        ],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"How often do you reflect on your thoughts and emotions?",
-        options:["Daily","Several times a week","Occasionally","Rarely"],
-        points:[4,3,2,1]
-    },
-
-    {
-        q:"Overall, how mindful do you feel at work?",
-        options:["Highly mindful","Generally mindful","Sometimes mindful","Need to improve"],
-        points:[4,3,2,1]
+        points:[3,2,1,0]
     },
 
     {
@@ -577,7 +523,24 @@ const questions = [
             "Ask colleagues whether the manager has complained about you",
             "Prepare a defensive explanation before the meeting"
         ],
-        points:[2,4,0,1]
+        points:[1,4,0,1]
+    },
+
+    {
+        q:"When work becomes overwhelming, what do you usually do?",
+        options:[
+            "Prioritize and stay calm",
+            "Take a short break",
+            "Continue working despite the pressure",
+            "Feel completely overwhelmed"
+        ],
+        points:[3,2,1,0]
+    },
+
+    {
+        q:"How comfortable are you discussing concerns with colleagues?",
+        options:["Very comfortable","Comfortable","Somewhat uncomfortable","Very uncomfortable"],
+        points:[3,2,1,0]
     },
 
     {
@@ -589,7 +552,96 @@ const questions = [
             "Defend every part of the proposal immediately",
             "Withdraw the proposal to avoid further criticism"
         ],
-        points:[1,4,0,2]
+        points:[1,4,0,1]
+    },
+
+    {
+        q:"How often do you take short mental breaks during work?",
+        options:["Regularly","Often","Sometimes","Almost never"],
+        points:[3,2,1,0]
+    },
+
+    {
+        q:"How focused are you during important tasks?",
+        options:["Extremely focused","Quite focused","Sometimes distracted","Frequently distracted"],
+        points:[3,2,1,0]
+    },
+
+    {
+        tag:"Logical Reasoning",
+        q:"You're comparing two candidates for a client-facing HR role. One has more experience but weaker communication skills in the interview; the other has less experience but communicates very clearly. What is the most logical way to decide?",
+        options:[
+            "Choose the more experienced candidate automatically, since experience matters most",
+            "Weigh both experience and the specific demands of the role before deciding",
+            "Choose whoever interviewed most recently",
+            "Ask a colleague to make the decision for you"
+        ],
+        points:[1,4,0,1]
+    },
+
+    {
+        q:"How well do you maintain a healthy work-life balance?",
+        options:["Very well","Well","Needs improvement","Poorly"],
+        points:[3,2,1,0]
+    },
+
+    {
+        q:"How do you react when something does not go according to plan?",
+        options:[
+            "Stay calm and adapt",
+            "Try to solve it quickly",
+            "Become somewhat stressed",
+            "Become very stressed"
+        ],
+        points:[3,2,1,0]
+    },
+
+    {
+        tag:"Logical Reasoning",
+        q:"An employee insists they never received an official letter HR sent two weeks ago. What is the most logical first step?",
+        options:[
+            "Assume the employee is mistaken and proceed with the next step anyway",
+            "Check the actual sent records — email, post, or tracking — before concluding anything",
+            "Resend the letter immediately without checking anything first",
+            "Escalate straight to the reporting manager"
+        ],
+        points:[0,4,1,1]
+    },
+
+    {
+        q:"How often do you reflect on your thoughts and emotions?",
+        options:["Daily","Several times a week","Occasionally","Rarely"],
+        points:[3,2,1,0]
+    },
+
+    {
+        tag:"Logical Reasoning",
+        q:"Two team leads interpret the same policy clause differently and both act on their own reading of it. What is the most logical way to resolve this?",
+        options:[
+            "Let each team continue with its own interpretation to avoid conflict",
+            "Go back to the original policy document and clarify the intended meaning",
+            "Side with whichever team lead has more seniority",
+            "Escalate immediately without first checking the policy text"
+        ],
+        points:[1,4,0,1]
+    },
+
+    {
+        q:"Overall, how mindful do you feel at work?",
+        options:["Highly mindful","Generally mindful","Sometimes mindful","Need to improve"],
+        points:[3,2,1,0]
+    },
+
+    {
+        tag:"Logical Reasoning",
+        q:"You notice a rise in sick-leave requests from one team over the past month, but don't yet know why. What is the most logical next step?",
+        options:[
+            "Assume the manager is mistreating the team",
+            "Gather context first — check workload, recent changes, or speak with a few team members",
+            "Ignore it and assume it will resolve on its own",
+            "Send a mass email asking everyone to explain their absences"
+        ],
+        points:[0,4,1,1]
     }
 
 ];
